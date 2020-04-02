@@ -8,9 +8,7 @@ export const loginService = async (user)=>{
           'Content-Type': 'application/json'
       }
     })
-    var data = await response.json()
-    console.log(data);
-    
+    var data = await response.json()    
     return data
   }
 

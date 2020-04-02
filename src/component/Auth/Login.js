@@ -22,6 +22,10 @@ const  Login = (props) => {
     const registrarUser =()=>{
         props.register();
     }
+    const resetPasswordUSer = (e)=>{
+        e.preventDefault();
+        props.resetPassword();
+    }
     return (
         
         <div>
@@ -46,6 +50,7 @@ const  Login = (props) => {
                             <button type="submit" className="btn btn-secondary">Ingresar</button>
                             <button type="submit" onClick={registrarUser} className="btn btn-primary" style={{'marginLeft': '2%'}} >Registrar</button>
                         </form>
+                        <a href='' onClick={resetPasswordUSer} >¿Has olvidado la contreña?</a>
                     </div>
                 </div>
             </div>
