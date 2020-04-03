@@ -1,5 +1,10 @@
 import React from 'react';
 import '../../CSS/Login.css';
+import {
+    Redirect,
+    Link
+  } from "react-router-dom";
+  
 const  Login = (props) => {
 
     let userName = React.createRef();
@@ -19,13 +24,11 @@ const  Login = (props) => {
         }
         e.currentTarget.reset();
     }
-    const registrarUser =()=>{
-        props.register();
-    }
-    const resetPasswordUSer = (e)=>{
-        e.preventDefault();
-        props.resetPassword();
-    }
+    
+    
+
+    if ( props.userLogin)
+        return <Redirect to={'/'} />
     return (
         
         <div>
@@ -40,17 +43,17 @@ const  Login = (props) => {
                     <div className="login-form">
                         <form onSubmit={loginForm}>
                             <div className="form-group">
-                                <label>Usuario</label>
-                                <input type="text"  ref={userName} className="form-control" placeholder="User Name"/>
+                                <label>Email</label>
+                                <input type="text"  ref={userName} className="form-control" placeholder="Email"/>
                             </div>
                             <div className="form-group">
                                 <label>Contraseña</label>
                                 <input type="password" ref={password} className="form-control" placeholder="Password"/>
                             </div>
                             <button type="submit" className="btn btn-secondary">Ingresar</button>
-                            <button type="submit" onClick={registrarUser} className="btn btn-primary" style={{'marginLeft': '2%'}} >Registrar</button>
+                            <Link to="/register" style={{'textDecotaion':'none'}}> <button class="btn btn-primary" style={{'textDecotaion':'none'}}>Registrar</button></Link>
                         </form>
-                        <a href='' onClick={resetPasswordUSer} >¿Has olvidado la contreña?</a>
+                        <Link to="/resetPass"> <a class="nav-link" href="/#">¿Has olvidado la contreña?</a></Link>
                     </div>
                 </div>
             </div>

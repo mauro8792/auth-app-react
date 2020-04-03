@@ -1,12 +1,13 @@
 import React from "react";
-
+import {NavLink, Link} from "react-router-dom";
+import { NavDropdown } from 'react-bootstrap';
 const Nav = (props)=> {
+    console.log(props.userLogin);
+    
     const name = props.userLogin.name
-    const role = props.userLogin.id_role    
+    const role = props.userLogin.id_role
 
-    const showUser = ()=>{     
-        props.showUser();
-    }
+    
     
     if (role===1) {
         
@@ -22,17 +23,24 @@ const Nav = (props)=> {
                             <ul className="nav navbar-nav">
                                 
                                 <li className="nav-item">
-                                    <button type="button" onClick={showUser} className="btn btn-secondary">Usuarios</button>
+                                    {/* <button type="button" href="/users" onClick={showUser} className="btn btn-secondary">Usuarios</button> */}
+                                     <Link to="/users" > <a class="nav-link"  href="/#">Usuarios</a></Link>
                                 </li>
+                               
                                 
                             </ul>
                             <ul className="nav navbar-nav flex-row justify-content-between ml-auto">
-                            <li className="nav-item" style={{'marginTop':'10px'}} >
+                            {/* <li className="nav-item" style={{'marginTop':'10px'}} >
                                 <p className="nav-link ">Hola {name}!</p>
-                            </li>
-                            <li className="nav-item"  style={{'marginLeft': '20px', 'marginTop':'10px'}}>
+                            </li> */}
+                            {/* <li className="nav-item"  style={{'marginLeft': '20px', 'marginTop':'10px'}}>
                                 <button type="button"  className="btn btn-outline-secondary">Cerrar Sesion</button>
-                            </li>
+                            </li> */}
+                            <NavDropdown title={`Hola ${name}!`} id="dropdown-button-drop-right" drop='buttom'>
+                                   <NavDropdown.Item ><NavLink to="/MyPerfil" style={{ color: 'black', padding: 10}} activeStyle={{fontWeight: "bold", color: "#5cb85c"}}>Mi cuenta</NavLink></NavDropdown.Item> 
+                                   <NavDropdown.Item ><NavLink to="/logOut" style={{ color: 'black', padding: 10}} activeStyle={{fontWeight: "bold", color: "#5cb85c"}}>Cerrar Sesion</NavLink></NavDropdown.Item> 
+                                    
+                            </NavDropdown>
                                 
                             </ul>
                         </div>

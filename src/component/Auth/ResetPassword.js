@@ -1,5 +1,6 @@
 import React from "react";
 import '../../CSS/Login.css';
+import {Link} from "react-router-dom";
 const Register = (props)=> {
     
     
@@ -7,12 +8,13 @@ const Register = (props)=> {
 
     const resetpass = (e)=>{
         e.preventDefault();
-        props.resetPassUser(userName.current.value)
+        if(userName.current.value){
+            props.resetPassUser(userName.current.value)
+        }else
+            alert('Debes ingresar un Email')
         e.currentTarget.reset();
     }
-    const back=()=>{
-        props.returnLogin()
-    }
+    
     return (
         
         <div>
@@ -32,15 +34,15 @@ const Register = (props)=> {
                         <div className="row" >
                             <div className='col'>
                                 <div className="form-group">
-                                    <label>Usuario</label>
-                                    <input type="text"  ref={userName} className="form-control" placeholder="Usuario"/>
+                                    <label>Email</label>
+                                    <input type="text"  ref={userName} className="form-control" placeholder="Email"/>
                                 </div>
                             </div>                            
                         </div>
                         
                             <button type="submit"   className="btn btn-success"  >Enviar</button>
                             <button type="reset"   className="btn btn-secondary" style={{'marginLeft': '2%'}} >Reset</button>
-                            <button onClick={back}   className="btn btn-primary" style={{'marginLeft': '2%'}} >Volver</button>
+                            <Link to="/"> <button className="btn btn-primary" style={{'marginLeft': '2%'}}>Volver</button></Link>
 
                         
                         </form>
